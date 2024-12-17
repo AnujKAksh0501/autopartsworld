@@ -8,3 +8,28 @@
   font-stretch: 75% 125%;
   src: url('../fonts/Mona-Sans.var.woff2') format('woff2');
 }
+.animate-wiggle {
+  -webkit-animation: wiggle 1.5s infinite;
+  animation: wiggle 1.5s infinite;
+}
+@-webkit-keyframes wiggle {
+  0%,
+  100% {
+    transform: scale(1.5) rotate(5deg);
+  }
+
+  50% {
+    transform: scale(0.7) rotate(-5deg);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: scale(1.5) rotate(5deg);
+  }
+
+  50% {
+    transform: scale(0.7) rotate(-5deg);
+  }
+}

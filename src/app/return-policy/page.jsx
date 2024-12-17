@@ -17,7 +17,7 @@ export default function ReturnPolicy() {
           <FormComponent />
           <div className="mx-auto max-w-xl px-2 sm:px-0 sm:pl-16">
             <h1 className="hidden font-display text-2xl font-semibold tracking-tight text-orange-400 [text-wrap:balance] sm:text-3xl sm:text-orange-950 md:block">
-              Engines and Drivetrain return policy.
+              Autoparts World return policy.
             </h1>
             <div className="flex items-center sm:py-3">
               <div className="mr-2 flex h-12 w-12 items-center  rounded-full bg-white">
@@ -91,7 +91,7 @@ export default function ReturnPolicy() {
           Cancellation Policy
         </p>
         <p className="pt-4 font-display text-base">
-          A1 Car Parts knows that the situation may be erratic and that,
+          Autoparts World knows that the situation may be erratic and that,
           occasionally, you may need to cancel an order. We&apos;ve got you
           covered, so don&apos;t worry! Before receiving our formal order
           confirmation, you are free to cancel your order anytime.
@@ -120,7 +120,7 @@ export default function ReturnPolicy() {
           Return Policy
         </p>
         <p className="pt-4 font-display text-base">
-          At A1 Car Parts, we stake our name on the high caliber of our
+          At Autoparts World, we stake our name on the high caliber of our
           goods and services, and we are aware that ensuring client happiness
           necessitates offering a robust and thorough return policy.
         </p>
@@ -142,7 +142,7 @@ export default function ReturnPolicy() {
           not eligible for return.
         </p>
         <p className="pt-4 font-display text-base">
-          Please be aware that A1 Car Parts does not accept
+          Please be aware that Autoparts World does not accept
           responsibility for any extra expenses incurred due to the installation
           or usage of incorrect or defective parts. This includes any related
           labor costs, installation fees, towing fees, additional repair costs,
@@ -226,7 +226,7 @@ export default function ReturnPolicy() {
           be aware of this possibility.
         </p>
         <p className="pt-4 font-display text-base">
-          Our goal at A1 Car Parts is to make every customer experience
+          Our goal at Autoparts World is to make every customer experience
           great. Please contact us if you have any more queries or worries
           concerning our return or cancellation policies.
         </p>

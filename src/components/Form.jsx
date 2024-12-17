@@ -251,7 +251,7 @@ const FormComponent = ({ part = 'Part' }) => {
         <div className="col-span-12 sm:col-span-12">
           <select
             name="part"
-            id="id_part"
+            id="part"
             className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
             required
             defaultValue={formSelections.part}
@@ -297,7 +297,7 @@ const FormComponent = ({ part = 'Part' }) => {
         <div className="col-span-12 sm:col-span-12">
           <select
             name="make"
-            id="id_make"
+            id="make"
             className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
             required
             defaultValue={formSelections.make}
@@ -344,164 +344,113 @@ const FormComponent = ({ part = 'Part' }) => {
           </select>
         </div>
         <div className="col-span-12 sm:col-span-12">
-          {options.model.length === 0 ? (
-            <input
-              disabled={formSelections.make === ''}
-              defaultValue={formSelections.model}
-              value={formSelections.model}
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
-              onChange={(e) => {
-                setFormSelections((prev) => ({
+          <select
+            name="model"
+            id="model"
+            className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
+            required
+            defaultValue={formSelections.model}
+            value={formSelections.model}
+            disabled={formSelections.make === ''}
+            data-gtm-form-interact-field-id="0"
+            onChange={async (e) => {
+              setFormSelections((prev) => ({
+                ...prev,
+                model: e.target.value,
+                year: '',
+                size: '',
+              }))
+              const data = await fetch(
+                `/api/formData/${formSelections.part}/${formSelections.make}/${e.target.value}`
+              )
+              const temp = await data.json()
+              if (temp.success) {
+                setOptions((prev) => ({
                   ...prev,
-                  model: e.target.value,
-                  year: '',
-                  size: '',
+                  year: temp.success,
+                  option: [],
                 }))
-              }}
-              placeholder="Model"
-            />
-          ) : (
-            <select
-              name="model"
-              id="id_model"
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
-              required
-              defaultValue={formSelections.model}
-              value={formSelections.model}
-              disabled={formSelections.make === ''}
-              data-gtm-form-interact-field-id="0"
-              onChange={async (e) => {
-                setFormSelections((prev) => ({
+              } else {
+                setOptions((prev) => ({
                   ...prev,
-                  model: e.target.value,
-                  year: '',
-                  size: '',
+                  year: [],
+                  option: [],
                 }))
-                const data = await fetch(
-                  `/api/formData/${formSelections.part}/${formSelections.make}/${e.target.value}`
-                )
-                const temp = await data.json()
-                if (temp.success) {
-                  setOptions((prev) => ({
-                    ...prev,
-                    year: temp.success,
-                    option: [],
-                  }))
-                } else {
-                  setOptions((prev) => ({
-                    ...prev,
-                    year: [],
-                    option: [],
-                  }))
-                }
-              }}
-            >
-              <option value="">- Select model -</option>
-              {options.model.map((model) => (
-                <option key={model} value={model}>
-                  {capitalizeAfterSpace(
-                    model.replace(/-/g, ' ').replace(/_/g, ' ')
-                  )}
-                </option>
-              ))}
-            </select>
-          )}
+              }
+            }}
+          >
+            <option value="">- Select model -</option>
+            {options.model.map((model) => (
+              <option key={model} value={model}>
+                {capitalizeAfterSpace(
+                  model.replace(/-/g, ' ').replace(/_/g, ' ')
+                )}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="col-span-12 sm:col-span-12">
-          {options.year.length === 0 ? (
-            <input
-              disabled={formSelections.model === ''}
-              defaultValue={formSelections.year}
-              value={formSelections.year}
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
-              onChange={(e) => {
-                setFormSelections((prev) => ({
+          <select
+            name="year"
+            id="year"
+            defaultValue={formSelections.year}
+            value={formSelections.year}
+            disabled={formSelections.model === ''}
+            className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
+            required
+            onChange={async (e) => {
+              setFormSelections((prev) => ({
+                ...prev,
+                year: e.target.value,
+                size: '',
+              }))
+              const data = await fetch(
+                `/api/formData/${formSelections.part}/${formSelections.make}/${formSelections.model}/${e.target.value}`
+              )
+              const temp = await data.json()
+              if (temp.success) {
+                setOptions((prev) => ({
                   ...prev,
-                  year: e.target.value,
-                  size: '',
+                  option: temp.success,
                 }))
-              }}
-              placeholder="Engine Year"
-            />
-          ) : (
-            <select
-              name="year"
-              defaultValue={formSelections.year}
-              value={formSelections.year}
-              id="id_year"
-              disabled={formSelections.model === ''}
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
-              required
-              onChange={async (e) => {
-                setFormSelections((prev) => ({
+              } else {
+                setOptions((prev) => ({
                   ...prev,
-                  year: e.target.value,
-                  size: '',
+                  option: [],
                 }))
-                const data = await fetch(
-                  `/api/formData/${formSelections.part}/${formSelections.make}/${formSelections.model}/${e.target.value}`
-                )
-                const temp = await data.json()
-                if (temp.success) {
-                  setOptions((prev) => ({
-                    ...prev,
-                    option: temp.success,
-                  }))
-                } else {
-                  setOptions((prev) => ({
-                    ...prev,
-                    option: [],
-                  }))
-                }
-              }}
-            >
-              <option value="Not Selected">- Select Engine Year -</option>
-              {options.year.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
-          )}
+              }
+            }}
+          >
+            <option value="Not Selected">- Select Engine Year -</option>
+            {options.year.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="col-span-12 sm:col-span-12">
-          {options.option.length === 0 ? (
-            <input
-              defaultValue={formSelections.size}
-              value={formSelections.size}
-              disabled={formSelections.year === ''}
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
-              onChange={(e) => {
-                setFormSelections((prev) => ({
-                  ...prev,
-                  size: e.target.value,
-                }))
-              }}
-              placeholder="Select Option"
-            />
-          ) : (
-            <select
-              name="size"
-              id="id_size"
-              defaultValue={formSelections.size}
-              value={formSelections.size}
-              disabled={formSelections.year === ''}
-              onChange={(e) => {
-                setFormSelections((prev) => ({
-                  ...prev,
-                  size: e.target.value,
-                }))
-              }}
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
-            >
-              <option value="">- Select Option -</option>
-              {['Not Sure', ...options.option].map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          )}
+          <select
+            name="size"
+            id="size"
+            defaultValue={formSelections.size}
+            value={formSelections.size}
+            disabled={formSelections.year === ''}
+            onChange={(e) => {
+              setFormSelections((prev) => ({
+                ...prev,
+                size: e.target.value,
+              }))
+            }}
+            className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:shadow-orange-400 focus:outline-none"
+          >
+            <option value="">- Select Option -</option>
+            {['Not Sure', ...options.option].map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="col-span-12 sm:col-span-12">
           <input

@@ -23,7 +23,7 @@ export function Services() {
             <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
               <ListItem title="What is the Process for making a Purchase?">
                 To place an order, you can either call our sales team at
-                1800-518-9776 or soon you can place an order online on our website
+                +1 888-855-1808 or soon you can place an order online on our website
                 (our website will shortly feature online ordering). We accept all
                 major credit cards such as VISA, Master Card, American Express,
                 and Discover Card, as well as cashiers checks and money orders by
@@ -64,7 +64,7 @@ export function Services() {
             className="mt-24 sm:mt-32 lg:mt-40"
           >
             <p>
-              A1 Car Parts was established in 2010 with the objective to
+              Engines Store was established in 2010 with the objective to
               provide customers with high- quality and low mileage used engines.
               Keeping the fact in mind that new vehicle or engine can cost a
               fortune, we offer largest collection of car engines for sale which

@@ -116,8 +116,8 @@ export default async function Blog() {
                       <p>Privacy Policy</p>
                     </h2>
                     <p className="mt-6 text-base text-neutral-600">
-                      Used A1 Car Parts (&quot;us&quot;, &quot;we&quot;,
-                      or &quot;our&quot;) operates a1-carparts.com
+                      Used Autoparts World (&quot;us&quot;, &quot;we&quot;,
+                      or &quot;our&quot;) operates autoparts-world.com
                       (hereinafter referred to as &quot;Service&quot;). This
                       privacy policy (&quot;Policy&quot;) outlines our policy
                       regarding the collection, use, and disclosure of personal
@@ -453,7 +453,7 @@ export default async function Blog() {
                     </strong> */}
                     <p className="mt-6 text-base text-neutral-600">
                       {/* <strong className="text-orange-400">
-                        Within A1 Car Parts :{' '}
+                        Within Autoparts World :{' '}
                       </strong>{' '} */}
                       Our Sites employ third-party advertising companies to
                       deliver targeted advertising on our behalf. This method of
@@ -1024,7 +1024,7 @@ export default async function Blog() {
                           18 and feels like your information has become
                           publicly-available through the service and you are
                           unable to remove it, you may request removal by
-                          contacting us at: support@A1 Car Parts.com. While
+                          contacting us at: support@Autoparts World.com. While
                           requesting for removal, you must be specific about the
                           information, and URL for each page where the
                           information is located.
